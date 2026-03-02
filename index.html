@@ -1,111 +1,226 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Momo Feast | Civil Lines Allahabad</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
     <style>
-        :root {
-            --primary-color: #e74c3c; /* Momo Feast Red */
-            --dark-bg: #1a1a1a;
-            --card-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        html { scroll-behavior: smooth; }
+        .cart-drawer { transform: translateX(100%); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1000; }
+        .cart-open { transform: translateX(0); }
+        .category-title { position: relative; display: inline-block; }
+        .category-title::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 40%; height: 3px; background: #ea580c; border-radius: 10px; }
+        .hero-gradient { 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?q=80&w=2069'); 
+            background-size: cover; background-position: center; 
         }
-
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f9f9f9; }
-
-        .header { background: var(--dark-bg); color: white; padding: 20px; text-align: center; }
-
-        .menu-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .food-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-            transition: transform 0.3s;
-            position: relative;
-        }
-
-        .food-card:hover { transform: translateY(-5px); }
-
-        .food-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            background: #eee;
-        }
-
-        .food-details { padding: 15px; }
-
-        .food-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 5px; color: #333; }
-
-        .food-price { color: var(--primary-color); font-weight: 600; font-size: 1.1rem; }
-
-        .add-btn {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            float: right;
-            font-weight: bold;
-        }
-
-        .add-btn:hover { background: #c0392b; }
-
-        .badge {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: #27ae60;
-            color: white;
-            padding: 3px 10px;
-            font-size: 12px;
-            border-radius: 3px;
-        }
+        .glass-nav { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
+        /* Hide Scrollbar for Nav */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body>
+<body class="bg-[#fdfcfb] text-slate-900 pb-20">
 
-<div class="header">
-    <h1>🥟 MOMO FEAST</h1>
-    <p>The Best Momos in Civil Lines, Allahabad</p>
-</div>
+    <div class="bg-orange-600 text-white text-[11px] py-1.5 px-4 flex justify-between items-center font-semibold tracking-wide">
+        <span><i class="fas fa-location-dot mr-1"></i> Civil Lines, Allahabad</span>
+        <a href="tel:+917068174315"><span><i class="fas fa-phone mr-1"></i> +91 7068174315</span></a>
+    </div>
 
-<div class="menu-container">
-    <div class="food-card">
-        <span class="badge">Best Seller</span>
-        <img src="https://images.unsplash.com/photo-1534422298391-e4f8c170db76?auto=format&fit=crop&q=80&w=400" class="food-img" alt="Paneer Momos">
-        <div class="food-details">
-            <div class="food-title">Paneer Steamed Momos (10pcs)</div>
-            <span class="food-price">₹120</span>
-            <button class="add-btn" onclick="addToCart('Paneer Steamed', 120)">ADD +</button>
+    <header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 px-5 py-4 flex justify-between items-center shadow-sm">
+        <div>
+            <h1 class="text-2xl font-extrabold text-orange-600 tracking-tighter italic">MOMO FEAST</h1>
+            <div class="flex items-center gap-1">
+                <span class="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                <p class="text-[10px] text-gray-500 font-bold uppercase">Accepting Orders</p>
+            </div>
+        </div>
+        <div class="text-right">
+            <p class="text-[11px] font-bold text-orange-600"><i class="far fa-clock mr-1"></i> 12:30 PM - 11:45 PM</p>
+        </div>
+    </header>
+
+    <section class="h-[250px] hero-gradient flex items-center px-6 relative overflow-hidden">
+        <div class="max-w-xl">
+            <span class="bg-orange-500 text-white text-[10px] font-black px-2 py-1 rounded mb-3 inline-block uppercase tracking-widest">Top Rated in Prayagraj</span>
+            <h2 class="text-4xl font-extrabold text-white mb-2 leading-tight">The Art of <span class="text-orange-400">Authentic</span> Momos</h2>
+            <p class="text-gray-200 text-sm font-medium">Experience the real taste of street-style Chinese right here in Civil Lines.</p>
+        </div>
+    </section>
+
+    <nav class="sticky top-[72px] z-40 glass-nav border-b overflow-x-auto no-scrollbar shadow-sm">
+        <div class="flex gap-8 p-4 px-6 font-bold text-sm whitespace-nowrap">
+            <a href="#cat-momos" class="text-orange-600">Momos</a>
+            <a href="#cat-crunchy" class="text-slate-600 hover:text-orange-600">Crunchy</a>
+            <a href="#cat-chinese" class="text-slate-600 hover:text-orange-600">Chinese</a>
+            <a href="#cat-rice" class="text-slate-600 hover:text-orange-600">Rice</a>
+            <a href="#cat-snacks" class="text-slate-600 hover:text-orange-600">Snacks</a>
+            <a href="#cat-drinks" class="text-slate-600 hover:text-orange-600">Drinks</a>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4 py-8 space-y-12">
+        <section id="cat-momos" class="scroll-mt-32">
+            <h2 class="text-2xl font-extrabold mb-6 category-title">🥟 STEAM & FRIED MOMOS</h2>
+            <div id="momos-list" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        </section>
+
+        <section id="cat-crunchy" class="scroll-mt-32">
+            <h2 class="text-2xl font-extrabold mb-6 category-title">💥 CRUNCHY SPECIALS</h2>
+            <div id="crunchy-list" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        </section>
+
+        <section id="cat-chinese" class="scroll-mt-32">
+            <h2 class="text-2xl font-extrabold mb-6 category-title">🍜 CHINESE STARTERS</h2>
+            <div id="chinese-list" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        </section>
+
+        <section id="cat-rice" class="scroll-mt-32">
+            <h2 class="text-2xl font-extrabold mb-6 category-title">🍚 RICE & NOODLES</h2>
+            <div id="rice-list" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        </section>
+        
+        <section id="cat-snacks" class="scroll-mt-32">
+            <h2 class="text-2xl font-extrabold mb-6 category-title">🍔 BURGERS & SIDES</h2>
+            <div id="snacks-list" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        </section>
+    </main>
+
+    <div onclick="toggleCart()" class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-md z-50 bg-orange-600 text-white p-4 rounded-2xl shadow-[0_20px_50px_rgba(234,88,12,0.3)] flex justify-between items-center cursor-pointer active:scale-95 transition-all">
+        <div class="flex items-center gap-4">
+            <div class="relative">
+                <i class="fas fa-shopping-bag text-xl"></i>
+                <span id="float-count" class="absolute -top-2 -right-2 bg-white text-orange-600 text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span>
+            </div>
+            <div>
+                <p class="text-xs font-bold opacity-80 uppercase leading-none">View Cart</p>
+                <p id="float-total" class="font-extrabold text-lg">₹0</p>
+            </div>
+        </div>
+        <i class="fas fa-arrow-right text-orange-200"></i>
+    </div>
+
+    <div id="cartDrawer" class="cart-drawer fixed top-0 right-0 h-full w-full md:w-[400px] bg-white shadow-2xl flex flex-col">
+        <div class="p-6 border-b flex justify-between items-center bg-orange-50">
+            <h2 class="text-xl font-extrabold tracking-tight">MY BASKET <span id="cart-count-title" class="text-orange-600">(0)</span></h2>
+            <button onclick="toggleCart()" class="h-10 w-10 flex items-center justify-center rounded-full bg-white text-gray-400 shadow-sm">&times;</button>
+        </div>
+        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+            <div id="empty-cart" class="text-center py-10">
+                <i class="fas fa-utensils text-4xl text-gray-200 mb-4"></i>
+                <p class="text-gray-400 font-bold">Your cart is empty!</p>
+            </div>
+        </div>
+        <div class="p-6 border-t bg-gray-50">
+            <div class="flex justify-between items-end mb-6">
+                <span class="text-gray-500 font-bold text-sm uppercase">Total Amount</span>
+                <span id="cart-total" class="text-3xl font-black text-orange-600 leading-none">₹0</span>
+            </div>
+            <button onclick="checkout()" class="w-full bg-green-600 hover:bg-green-700 text-white py-5 rounded-2xl font-black text-lg flex items-center justify-center gap-3 shadow-lg transition-all">
+                <i class="fab fa-whatsapp text-2xl"></i> ORDER VIA WHATSAPP
+            </button>
         </div>
     </div>
 
-    <div class="food-card">
-        <img src="https://images.unsplash.com/photo-1625220194771-7ebdea0b70b9?auto=format&fit=crop&q=80&w=400" class="food-img" alt="Chicken Momos">
-        <div class="food-details">
-            <div class="food-title">Chicken Kurkure Momos (8pcs)</div>
-            <span class="food-price">₹150</span>
-            <button class="add-btn" onclick="addToCart('Chicken Kurkure', 150)">ADD +</button>
-        </div>
-    </div>
-</div>
+    <script>
+        const WHATS_APP_NUMBER = "917068174315"; 
+        const menuData = [
+            { id: 1, cat: "momos", n: "Veg Steamed Momos", h: 90, f: 170, type: "dual", img: "https://images.unsplash.com/photo-1625220194771-7ebdea0b70b9?w=300" },
+            { id: 2, cat: "momos", n: "Paneer Steamed Momos", h: 110, f: 200, type: "dual", img: "https://images.unsplash.com/photo-1625220194771-7ebdea0b70b9?w=300" },
+            { id: 5, cat: "momos", n: "Veg Classic Fried", h: 100, f: 180, type: "dual", img: "https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?w=300" },
+            { id: 9, cat: "crunchy", n: "Veg Classic Crunchy", h: 130, f: 220, type: "dual", img: "https://images.unsplash.com/photo-1563245332-692e49974cd0?w=300" },
+            { id: 12, cat: "chinese", n: "Chilli Potato", h: 100, f: 180, type: "dual", img: "https://images.unsplash.com/photo-1512152272829-e3139592d56f?w=300" },
+            { id: 17, cat: "rice", n: "Veg Fried Rice", h: 100, f: 180, type: "dual", img: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=300" },
+            { id: 21, cat: "snacks", n: "Veg Burger", p: 70, type: "single", img: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=300" },
+            { id: 29, cat: "drinks", n: "Virgin Mojito", p: 90, type: "single", img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=300" }
+        ];
 
-<script>
-    function addToCart(name, price) {
-        alert(name + " has been added to your feast! 🎉");
-        // Yahan aap Cart logic ya WhatsApp link add kar sakte hain
-    }
-</script>
+        let cart = [];
 
+        function render() {
+            const sections = ["momos", "crunchy", "chinese", "rice", "snacks"];
+            sections.forEach(s => {
+                const el = document.getElementById(`${s}-list`);
+                if(!el) return;
+                menuData.filter(i => i.cat === s).forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = "bg-white p-4 rounded-2xl flex justify-between items-center shadow-sm border border-orange-50 hover:border-orange-200 transition-all group";
+                    card.innerHTML = `
+                        <div class="flex items-center gap-4">
+                            <div class="relative overflow-hidden rounded-xl h-20 w-20">
+                                <img src="${item.img}" class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-800 text-base mb-1">${item.n}</h3>
+                                ${item.type === 'dual' ? `
+                                    <select id="size-${item.id}" class="bg-orange-50 text-orange-600 text-xs font-black px-2 py-1.5 rounded-lg border-none outline-none">
+                                        <option value="${item.h}">Half - ₹${item.h}</option>
+                                        <option value="${item.f}">Full - ₹${item.f}</option>
+                                    </select>
+                                ` : `<p class="text-orange-600 font-black">₹${item.p}</p>`}
+                            </div>
+                        </div>
+                        <button onclick="addToCart(${item.id})" class="bg-orange-600 text-white h-10 w-20 rounded-xl font-black text-xs shadow-lg active:scale-90 transition-all uppercase tracking-tighter">Add</button>
+                    `;
+                    el.appendChild(card);
+                });
+            });
+        }
+
+        function addToCart(id) {
+            const item = menuData.find(i => i.id === id);
+            let p = item.p, name = item.n;
+            if(item.type === 'dual') {
+                const s = document.getElementById(`size-${id}`);
+                p = parseInt(s.value);
+                name = `${item.n} (${s.options[s.selectedIndex].text.split(' - ')[0]})`;
+            }
+            cart.push({ name, price: p });
+            updateCart();
+        }
+
+        function updateCart() {
+            const total = cart.reduce((s, i) => s + i.price, 0);
+            document.getElementById('float-count').innerText = cart.length;
+            document.getElementById('cart-count-title').innerText = `(${cart.length})`;
+            document.getElementById('float-total').innerText = '₹' + total;
+            document.getElementById('cart-total').innerText = '₹' + total;
+            
+            const list = document.getElementById('cart-items');
+            if(cart.length === 0) {
+                document.getElementById('empty-cart').style.display = 'block';
+                list.innerHTML = "";
+            } else {
+                document.getElementById('empty-cart').style.display = 'none';
+                list.innerHTML = cart.map((it, idx) => `
+                    <div class="flex justify-between items-center bg-gray-50 p-4 rounded-xl border border-gray-100">
+                        <div>
+                            <p class="text-sm font-bold text-slate-700">${it.name}</p>
+                            <p class="font-black text-orange-600">₹${it.price}</p>
+                        </div>
+                        <button onclick="removeItem(${idx})" class="text-red-400 h-8 w-8 rounded-full hover:bg-red-50"><i class="fas fa-trash-alt text-sm"></i></button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function removeItem(i) { cart.splice(i, 1); updateCart(); }
+        function toggleCart() { document.getElementById('cartDrawer').classList.toggle('cart-open'); }
+
+        function checkout() {
+            if(cart.length === 0) return alert("Please add something to your basket!");
+            let text = "✨ *MOMO FEAST ORDER* ✨\n\n";
+            cart.forEach((it, i) => text += `${i+1}. ${it.name} - *₹${it.price}*\n`);
+            text += `\n💰 *TOTAL AMOUNT: ₹${cart.reduce((s, i) => s + i.price, 0)}*\n\n📍 *Civil Lines, Allahabad*`;
+            window.open(`https://wa.me/${WHATS_APP_NUMBER}?text=${encodeURIComponent(text)}`);
+        }
+
+        render();
+    </script>
 </body>
 </html>
