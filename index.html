@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary-color: #e74c3c; /* Momo Feast Red */
+            --dark-bg: #1a1a1a;
+            --card-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f9f9f9; }
+
+        .header { background: var(--dark-bg); color: white; padding: 20px; text-align: center; }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .food-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .food-card:hover { transform: translateY(-5px); }
+
+        .food-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #eee;
+        }
+
+        .food-details { padding: 15px; }
+
+        .food-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 5px; color: #333; }
+
+        .food-price { color: var(--primary-color); font-weight: 600; font-size: 1.1rem; }
+
+        .add-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            float: right;
+            font-weight: bold;
+        }
+
+        .add-btn:hover { background: #c0392b; }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #27ae60;
+            color: white;
+            padding: 3px 10px;
+            font-size: 12px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>🥟 MOMO FEAST</h1>
+    <p>The Best Momos in Civil Lines, Allahabad</p>
+</div>
+
+<div class="menu-container">
+    <div class="food-card">
+        <span class="badge">Best Seller</span>
+        <img src="https://images.unsplash.com/photo-1534422298391-e4f8c170db76?auto=format&fit=crop&q=80&w=400" class="food-img" alt="Paneer Momos">
+        <div class="food-details">
+            <div class="food-title">Paneer Steamed Momos (10pcs)</div>
+            <span class="food-price">₹120</span>
+            <button class="add-btn" onclick="addToCart('Paneer Steamed', 120)">ADD +</button>
+        </div>
+    </div>
+
+    <div class="food-card">
+        <img src="https://images.unsplash.com/photo-1625220194771-7ebdea0b70b9?auto=format&fit=crop&q=80&w=400" class="food-img" alt="Chicken Momos">
+        <div class="food-details">
+            <div class="food-title">Chicken Kurkure Momos (8pcs)</div>
+            <span class="food-price">₹150</span>
+            <button class="add-btn" onclick="addToCart('Chicken Kurkure', 150)">ADD +</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function addToCart(name, price) {
+        alert(name + " has been added to your feast! 🎉");
+        // Yahan aap Cart logic ya WhatsApp link add kar sakte hain
+    }
+</script>
+
+</body>
+</html>
